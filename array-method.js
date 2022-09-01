@@ -1,3 +1,7 @@
+// method: 객체의 속성인 함수, 두가지 종류의 메소드가 있음
+// 객체 인스턴스에 의해 수행되는 태스크에 내장된 인스턴스 메소드
+// 오브젝트 생성자에서 직접 호출되는 태스크인 정적 메소드
+
 // forEach()
 // 주어진 함수를 배열 요소 각각에 대해 실행함.
 const array1 = ["a", "b", "c"];
@@ -138,3 +142,56 @@ const words = [
 const result = words.filter((word) => word.length > 6);
 // 글자수가 여섯글자보다 많은것들 반환.
 console.log(result);
+
+// findIndex()
+// 주어진 판별 함수를 만족하는 배열의 첫번째 요소에 대한 인덱스를 반환
+// 만족하는 요소가 없으면 -1 반환
+const arrayNumber = [5, 12, 8, 130, 44];
+const isLargeNumber = (element) => element > 13;
+// 판별함수에서 13보다 작은 배열 반환 요구
+console.log(arrayNumber.findIndex(isLargeNumber));
+// 13보다 작은 요소는 3개라서 3이 출력
+
+// includes()
+// 배열의 특정 요소를 포함하고 있는지 판별
+const number = [1, 2, 3];
+console.log(number.includes(2));
+// 배열에 2라는 요소가 포함 되어 있으므로 true라고 출력
+const pets = ["cat", "dog", "bat"];
+console.log(pets.includes("cat"));
+// 배열에 cat이라는 요소가 포함 되어 있으므로 true
+console.log(pets.includes("pig"));
+// pig라는 요소는 포함 되어 있지 않으므로 false라고 출력
+
+// map()
+// 배열 내의 모든 요소 각각에 대하여 주어진 함수를 호출한 결과를 모아 새로운 배열을 반환
+const arrMap = [1, 4, 9, 16];
+const map1 = arrMap.map((x) => x * 2);
+console.log(map1);
+// 배열의 각 요소마다 매개 변수가 적용되고 그 공식이 삽입돼서 출력
+// ex)요소 4가 매개변수 x에 적용되어 작성되어 있는 공식으로 출력됨
+// 출력된 값 --> [2, 8, 18, 32]
+
+// reduce()
+// 배열의 각 요소에 대해 주어진 리듀서(reducer)함수를 실행, 하나와 결과값을 반환
+const arrReduce = [1, 22, 31, 4];
+const initialvalue = 0;
+const sumWithInitial = arrReduce.reduce(
+  (previousValue, currentValue) => previousValue + currentValue,
+  initialvalue
+);
+// arrReduce에 있는 배열의 요소들을 전부 더한 값이 나오는 함수
+console.log(sumWithInitial);
+
+// sort()
+// 배열의 요소를 적절한 위치에 정렬한 후 그 배열을 반환
+const monthsSort = ["march", "jan", "april", "fed", "bad", "dec"];
+monthsSort.sort();
+console.log(monthsSort);
+// 앞자리 알파벳 순서대로 출력됨
+// [ 'april', 'bad', 'dec', 'fed', 'jan', 'march' ]
+const numberSort = [1000000, 987, 23049, 70, 888];
+numberSort.sort();
+console.log(numberSort);
+// 앞자리 숫자 순서대로 출력
+// [ 1000000, 23049, 70, 888, 987 ]
